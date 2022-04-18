@@ -36,6 +36,9 @@ public:
     static const int CHAIN_MODE_AUTO = 0;
     static const int CHAIN_MODE_ADD = 1;
 
+    static const int OUTFMT_QCA = 40;
+    static const int OUTFMT_TCA = 41;
+
     static const unsigned int INDEX_DB_CA_KEY = 500;
 
     std::vector<MMseqsParameter *> strucclust;
@@ -58,12 +61,16 @@ public:
     int chainNameMode;
     int tmAlignFast;
     int nsample;
+
+    static std::vector<int> getOutputFormat(int formatMode, const std::string &outformat, bool &needSequences, bool &needBacktrace, bool &needFullHeaders,
+                                            bool &needLookup, bool &needSource, bool &needTaxonomyMapping, bool &needTaxonomy, bool &needCa);
+
+
 private:
 
     LocalParameters(LocalParameters const&);
     ~LocalParameters() {};
     void operator=(LocalParameters const&);
+
 };
-
-
 #endif
